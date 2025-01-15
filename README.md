@@ -3,7 +3,7 @@
 
 Nodepop es una aplicación web desarrollada para la venta de artículos, donde los usuarios pueden publicar, buscar y gestionar productos a través de funcionalidades avanzadas de filtrado y paginación, además de poseer funcionalidades como internacionalización, la gestión de productos con imágenes, y una API REST.
 
-## Índice de Retos
+## Índice de Funcionalidades Avanzadas
 
 ### 1. Internacionalización
 
