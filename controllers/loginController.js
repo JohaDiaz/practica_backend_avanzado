@@ -1,10 +1,37 @@
 import { User } from '../models/index.js';
 
+
+
 export async function indexLogin(req, res, next) {
   res.locals.error = '';
   res.locals.email = '';
   res.render('login');
 }
+
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Iniciar sesión
+ *     description: Autentica al usuario y crea una sesión.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso.
+ *       401:
+ *         description: Credenciales inválidas.
+ */
 
 export async function postLogin(req, res, next) {
   try {

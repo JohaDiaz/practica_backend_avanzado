@@ -1,5 +1,16 @@
 import { Product } from '../models/index.js'
 
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Página de inicio
+ *     description: Muestra la página principal con los productos.
+ *     responses:
+ *       200:
+ *         description: Página principal cargada correctamente.
+ */
+
 export async function index(req, res, next) {
   try {
     const userId = req.session.userId

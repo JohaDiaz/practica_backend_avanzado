@@ -1,6 +1,83 @@
 import createError from 'http-errors'
 import Product from '../../models/Product.js'
 
+/**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Recuperar una lista de productos
+ *     description: Recuperar una lista de productos basada en filtros, paginación y criterios de ordenamiento.
+ *     parameters:
+ *       - in: query
+ *         name: tag
+ *         schema:
+ *           type: string
+ *         description: Filtrar productos por etiqueta.
+ *       - in: query
+ *         name: min-price
+ *         schema:
+ *           type: number
+ *         description: Precio mínimo de los productos.
+ *       - in: query
+ *         name: max-price
+ *         schema:
+ *           type: number
+ *         description: Precio máximo de los productos.
+ *       - in: query
+ *         name: product-name
+ *         schema:
+ *           type: string
+ *         description: Filtrar productos por nombre.
+ *       - in: query
+ *         name: sort
+ *         schema:
+ *           type: string
+ *         description: Campo para ordenar.
+ *       - in: query
+ *         name: direction
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Dirección del ordenamiento.
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Número de página para la paginación.
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Número de productos por página.
+ *       - in: query
+ *         name: fields
+ *         schema:
+ *           type: string
+ *         description: Campos a incluir en la respuesta, separados por comas.
+ *     responses:
+ *       200:
+ *         description: Lista de productos.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *              
+ *                 totalRecords:
+ *                   type: integer
+ *                   description: Número total de productos.
+ *                 totalPages:
+ *                   type: integer
+ *                   description: Número total de páginas.
+ *                 currentPage:
+ *                   type: integer
+ *                   description: Número de la página actual.
+ *    
+ */
+
 export async function apiProductList(req, res, next){
   try {
     console.log('el usuario es: ', req.apiUserId)

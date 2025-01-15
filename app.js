@@ -43,7 +43,7 @@ app.post('/api/login', apiLoginController.loginJWT)
 
 // CRUD operations for products resource
 app.get('/api/products', jwtAuth.guard, apiProductsController.apiProductList) //obtiene listado de productos
-app.get('/api/products/:productId', jwtAuth.guard, apiProductsController.apiProductGetOne) // Obtiene el owner por id
+app.get('/api/products/:productId', jwtAuth.guard, apiProductsController.apiProductGetOne) // Obtiene el producto por id
 app.post('/api/products', jwtAuth.guard, upload.single('image'), apiProductsController.apiProductNew) // Crea un nuevo producto
 app.put('/api/products/:productId', jwtAuth.guard, upload.single('image'),apiProductsController.apiProductUpdate) // Actualiza el producto
 app.delete('/api/products/:productId', jwtAuth.guard, apiProductsController.apiProductDelete)// Borra el producto
@@ -57,6 +57,7 @@ app.delete('/api/products/:productId', jwtAuth.guard, apiProductsController.apiP
 app.use(sessionManager.middleware, sessionManager.useSessionInViews)
 app.use(i18n.init)
 app.get('/change-locale/:locale', langController.changeLocale)
+
 app.get('/', homeController.index) // revisar
 
 app.use('/api-doc', swaggerMiddleware)
@@ -65,6 +66,17 @@ app.use('/api-doc', swaggerMiddleware)
 // session
 app.get('/login', loginController.indexLogin)
 app.post('/login', loginController.postLogin)
+/**
+ * @swagger
+ * /logout:
+ *   all:
+ *     summary: Cerrar sesión
+ *     description: Cierra la sesión del usuario.
+ *     responses:
+ *       200:
+ *         description: Sesión cerrada correctamente.
+ */
+
 app.all('/logout', loginController.logout)
 
 {
