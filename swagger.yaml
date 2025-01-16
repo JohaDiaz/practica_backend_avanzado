@@ -1,22 +1,26 @@
 openapi: 3.0.3
 info:
   title: NodeApp - API de Nodepop
-  description: |
-      Nodepop es una API diseñada para gestionar productos, usuarios y etiquetas en una plataforma de comercio. Esta API proporciona operaciones CRUD para productos, soporta manejo de imágenes, aplica filtros y permite consultas por producto y usuario.
+  description: |-
+    Nodepop es una API diseñada para gestionar productos, usuarios y etiquetas en una plataforma de comercio. Esta API proporciona operaciones CRUD para productos, soporta manejo de imágenes, aplica filtros y permite consultas por producto y usuario.
 
-      **Características**:  
-      - Filtros para buscar productos por nombre, precio y etiquetas.  
-      - Paginación y ordenamiento de datos.  
-      - Gestión de usuarios con productos asociados.  
-      - Permite carga de imágenes de productos.  
-    
+    Características:  
+    - Filtros para buscar productos por nombre, precio y etiquetas.  
+    - Paginación y ordenamiento de datos.  
+    - Gestión de usuarios con productos asociados.  
+    - Permite carga de imágenes de productos.     
 version: 1.0.0
 servers:
   - url: http://localhost:3000
     description: Servidor local
+tags:
+  - name: products
+    description: Datos de tus productos 
 paths:
   /api/products:
     get:
+      tags:
+        - products
       summary: Recuperar una lista de productos
       description: Recuperar una lista de productos basada en filtros, paginación y criterios de ordenamiento.
       parameters:
@@ -72,6 +76,8 @@ paths:
                     type: integer
                     description: Número de la página actual.
     post:
+      tags:
+        - products
       summary: Crear un nuevo producto
       description: Agregar un nuevo producto a la base de datos.
       requestBody:
@@ -104,6 +110,8 @@ paths:
 
   /api/products/{productId}:
     get:
+      tags:
+        - products
       summary: Recuperar un producto por ID
       description: Obtener los detalles de un producto específico por su ID.
       parameters:
@@ -123,6 +131,8 @@ paths:
         '404':
           description: Producto no encontrado.
     put:
+      tags:
+        - products
       summary: Actualizar un producto por ID
       description: Actualizar los detalles de un producto existente.
       parameters:
@@ -162,6 +172,8 @@ paths:
         '404':
           description: Producto no encontrado.
     delete:
+      tags:
+        - products
       summary: Eliminar un producto por ID
       description: Eliminar un producto de la base de datos utilizando su ID.
       parameters:
